@@ -10,7 +10,8 @@ const pool = new Pool(
     port: env.POSTGRES_PORT,
     applicationName: env.POSTGRES_APPLICATION_NAME,
   },
-  20
+  20,
+  true
 );
 
 export const query = async <D>(query: string) => {
