@@ -8,6 +8,7 @@ const pool = new Pool(
     password: env.POSTGRES_PASSWORD,
     hostname: env.POSTGRES_HOST,
     port: env.POSTGRES_PORT,
+    applicationName: env.POSTGRES_APPLICATION_NAME,
   },
   20
 );

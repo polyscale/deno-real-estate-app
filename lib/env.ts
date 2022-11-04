@@ -9,4 +9,5 @@ export const env = {
   POSTGRES_PASSWORD: Deno.env.get("POSTGRES_PASSWORD") ?? "demo",
   POSTGRES_DATABASE: Deno.env.get("POSTGRES_DATABASE") ?? "demo",
   POSTGRES_PORT: Deno.env.get("POSTGRES_PORT") ?? 5432,
+  POSTGRES_APPLICATION_NAME: Deno.env.get("POSTGRES_APPLICATION_NAME"),
 };
