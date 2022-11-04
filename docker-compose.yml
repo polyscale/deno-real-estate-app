@@ -1,0 +1,15 @@
+version: "3"
+services:
+  database:
+    build:
+      dockerfile: Dockerfile.database
+      context: docker
+      tags:
+        - "ghcr.io/polyscale/real-estate-demo-database:latest"
+    platform: linux/amd64
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=demo
+      - POSTGRES_PASSWORD=demo
+      - POSTGRES_DATABASE=demo

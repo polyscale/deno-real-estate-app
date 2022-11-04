@@ -1,0 +1,24 @@
+ARG version
+
+FROM --platform=linux/amd64 postgres:15 AS base
+
+COPY ./data/property.sql /docker-entrypoint-initdb.d
+COPY ./data/saleshistory.sql /docker-entrypoint-initdb.d
+
+RUN grep -v 'exec "$@"' /usr/local/bin/docker-entrypoint.sh > /docker-entrypoint.sh && chmod 755 /docker-entrypoint.sh
+
+RUN mkdir /pgdata
+
+ENV PGDATA=/pgdata
+ENV POSTGRES_HOST_AUTH_METHOD trust
+ENV POSTGRES_USER=demo
+ENV POSTGRES_PASSWORD=demo
+ENV POSTGRES_DB demo
+
+RUN /docker-entrypoint.sh postgres
+RUN ls -la /pgdata
+
+FROM --platform=linux/amd64 postgres:15
+
+COPY --from=base --chown=postgres:postgres /pgdata /var/lib/postgresql/data
+RUN ls -la /var/lib/postgresql/data

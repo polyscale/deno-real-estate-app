@@ -1,0 +1,27 @@
+# fly.toml file generated for deno-real-estate-app-database on 2022-11-04T09:13:18+01:00
+
+app = "deno-real-estate-app-database"
+kill_signal = "SIGINT"
+kill_timeout = 5
+processes = []
+
+[build]
+  image = "ghcr.io/polyscale/real-estate-demo-database:latest"
+
+[env]
+
+[experimental]
+  allowed_public_ports = []
+  auto_rollback = true
+
+[[services]]
+internal_port = 5432
+protocol      = "tcp"
+
+  [[services.ports]]
+  port = 5432
+
+  [[services.tcp_checks]]
+  interval = 10000
+  timeout  = 2000
+
