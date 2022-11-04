@@ -1,6 +1,12 @@
-# fresh project
+# Deno Real Estate App
 
 ### Usage
+
+Start the datbase:
+
+```
+docker compose up
+```
 
 Start the project:
 
