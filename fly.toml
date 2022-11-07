@@ -18,8 +18,14 @@ processes = []
 internal_port = 5432
 protocol      = "tcp"
 
+  [services.concurrency]
+    type = "connections"
+    hard_limit = 60
+    soft_limit = 50
+    
   [[services.ports]]
   port = 5432
+
 
   [[services.tcp_checks]]
   interval = 10000

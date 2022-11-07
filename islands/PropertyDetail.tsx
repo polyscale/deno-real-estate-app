@@ -52,7 +52,7 @@ export default ({
                   .toString()
                   .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
               </b>{" "}
-              ({new Intl.DateTimeFormat().format(lastSale.soldAt.getTime())})
+              ({new Intl.DateTimeFormat().format(new Date(lastSale.soldAt))})
             </span>
           )}
           {lastSaleInCity && (
@@ -66,7 +66,7 @@ export default ({
               </b>{" "}
               (
               {new Intl.DateTimeFormat().format(
-                lastSaleInCity.soldAt.getTime()
+                new Date(lastSaleInCity.soldAt)
               )}
               )
             </span>
